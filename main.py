@@ -1,6 +1,7 @@
 import argparse
 import os
-from parsing import parsing_default
+from parsing import parsing_default_tag, parsing_meta
+from jinja2 import Environment, FileSystemLoader
 
 role = False
 molecule = False
@@ -10,6 +11,7 @@ parser = argparse.ArgumentParser(description='Ansible never write the doc help')
 
 parser.add_argument('-m', '--module' ,  type=str, help='Module directory path', required=False,default='.')
 parser.add_argument('-r', '--readme', type=str, help='Define readme file name', required=False, default='README.MD')
+parser.add_argument('-t', '--template', type=str, help='Define template file ', required=False, default='markdown.j2')
 
 arguments = parser.parse_args()
 
@@ -43,6 +45,16 @@ print(arguments.module)
 # Create README.MD file
 
 if role is True:
+    # Gathers information from parsing
+    name = os.path.basename(arguments.module[:-1])
+    list_tag_default = parsing_default_tag(path=arguments.module)
+    meta = parsing_meta(path=arguments.module)
+
+    # Load template
+    env = Environment(loader=FileSystemLoader('templates'))
+    template = env.get_template(arguments.template)
+
+    readme = template.render(name=name,default=list_tag_default,meta=meta)
     f = open(arguments.module + arguments.readme, "w+")
+    f.write(readme)
     f.close()
-    parsing_default(path=arguments.module)

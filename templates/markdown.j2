@@ -1,0 +1,42 @@
+{{ name }}
+-----------
+-----------
+
+Description
+-----------
+
+{{ meta.description }}
+
+Requirements
+-------------
+
+### Ansible version
+
+Minimum Ansible version : {{ meta.min_ansible_version }}
+
+### Platforms
+
+This role will work on the following platforms :
+
+Distribution | Version |
+--- | --- |
+{%- for distribution in meta.platforms %}
+{%- for version in distribution.versions %}
+{{ distribution.name }} | {{ version }} |
+{%- endfor %}
+{%- endfor %}
+
+Role Variables
+--------------
+
+Variable | Type | Mandatory |  Example | Description
+--- | --- | --- | --- | --- |
+{%- for item in default %}
+`{{ item.name }}`  | {{ item.type }} | {{ item.mandatory }} | {{ item.example }} | {{ item.description }} |
+{%- endfor %}
+
+
+Author
+-------
+
+{{ meta.author }}

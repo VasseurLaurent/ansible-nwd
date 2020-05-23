@@ -1,8 +1,9 @@
 from os.path import isfile, join
 from os import listdir
+import yaml
 import re
 
-def parsing_default(path):
+def parsing_default_tag(path):
     
     path = path + "defaults/"
     list_files_default = [f for f in listdir(path) if isfile(join(path, f))]
@@ -14,15 +15,30 @@ def parsing_default(path):
         file_opened = open(file_default,'r')
         lines = file_opened.readlines()
 
-        # Regex : # @var variable:description:example
+        # Regex : # @var variable:description:type:example:mandatory
 
         list_tag = []
         for line in lines:
-            regex_tag = re.findall(
-                '^\s*# @var ([\.0-9a-zA-Z_-]*):([\.0-9a-zA-Z_-]*):([\.0-9a-zA-Z_-]*)', line)
 
-            if len(regex_tag) != 0:
-                list_tag.append(regex_tag)
+            pattern = re.compile(
+                '^\s*# @var (?P<name>[\.0-9a-zA-Z_-]*):(?P<description>[\.0-9a-zA-Z_-]*):(?P<type>[\.0-9a-zA-Z_-]*):(?P<example>[\.0-9a-zA-Z_-]*):(?P<mandatory>[\.0-9a-zA-Z_-]*)')
 
-        print(list_tag[0][0][0])
+            for m in pattern.finditer(line):
+                list_tag.append(m.groupdict())
+
         file_opened.close()
+        return list_tag
+
+def parsing_meta(path):
+    meta = {}
+    path = path + "meta/main.yml"
+    with open(path, 'r') as f:
+        doc = yaml.safe_load(f)
+        meta = {'author': doc["galaxy_info"]["author"],
+                'description': doc["galaxy_info"]["description"],
+                'min_ansible_version': doc["galaxy_info"]["min_ansible_version"],
+                'platforms': doc["galaxy_info"]["platforms"]}
+                
+        return meta
+
+
