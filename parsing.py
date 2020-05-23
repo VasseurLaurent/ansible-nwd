@@ -5,7 +5,8 @@ import re
 
 def parsing_default_tag(path):
     
-    path = path + "defaults/"
+    path = path + "/defaults/"
+
     list_files_default = [f for f in listdir(path) if isfile(join(path, f))]
 
     # Add full path to all list files
@@ -31,7 +32,7 @@ def parsing_default_tag(path):
 
 def parsing_meta(path):
     meta = {}
-    path = path + "meta/main.yml"
+    path = path + "/meta/main.yml"
     with open(path, 'r') as f:
         doc = yaml.safe_load(f)
         meta = {'author': doc["galaxy_info"]["author"],
