@@ -30,6 +30,30 @@ def parsing_default_tag(path):
         file_opened.close()
         return list_tag
 
+def parsing_default_variable(path):
+
+    default_variable = []
+    path = path + "/defaults/"
+
+    list_files_default = [f for f in listdir(path) if isfile(join(path, f))]
+
+    # Add full path to all list files
+    list_files_default = [path + s for s in list_files_default]
+
+    for file_default in list_files_default:
+        with open(file_default) as f:
+            doc = yaml.load(f, Loader=yaml.FullLoader)
+            # print(doc)
+            for key, value in doc.items():
+                temp = { key : value }
+                default_variable.append(temp)
+    
+    print(default_variable[0])
+    return default_variable
+            
+
+
+
 def parsing_meta(path):
     meta = {}
     path = path + "/meta/main.yml"

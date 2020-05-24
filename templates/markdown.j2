@@ -30,10 +30,21 @@ Role Variables
 
 Variable | Type | Mandatory |  Example | Description
 --- | --- | --- | --- | --- |
-{%- for item in default %}
+{%- for item in default_tag %}
 `{{ item.name }}`  | {{ item.type }} | {{ item.mandatory }} | {{ item.example }} | {{ item.description }} |
 {%- endfor %}
 
+
+Default Variables
+------------------
+
+Variable | value |
+--- | --- |
+{%- for item in default_value %}
+{%- for key in item %}
+| {{ key }} | {{ item[key]}} |
+{%- endfor %}
+{%- endfor %}
 
 Author
 -------
