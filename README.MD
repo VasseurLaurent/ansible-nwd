@@ -87,3 +87,76 @@ Variable | Type | Mandatory |  Example | Description
 --- | --- | --- | --- | --- |
 `variable`  | type | false | example | variable description |
 `variable2`  | type2 | true | example2 | description2 |
+
+### Meta
+
+In the meta folder, ``Ansible-nwd`` will gather these following information:
+
+* Author
+* Description
+* Minimum Ansible Version
+* Platforms
+
+### Molecule
+
+In the folder molecule, ``Ansible-nwd`` will parse each subfolder (we consider one driver per folder ) and will gather information about available test plaforms written in the file ```molecule.yml``` .
+
+For now only 3 drivers are gathered by ```Ansible-nwd``` :
+
+* docker
+* vagrant : https://pypi.org/project/molecule-vagrant/
+* ec2 : https://pypi.org/project/molecule-ec2/
+
+For example :
+
+```yaml
+driver:
+  name: docker
+
+platforms:
+  - name: debian10
+    image: geerlingguy/docker-debian10-ansible
+    pre_build_image: true
+  - name: debian9
+    image: geerlingguy/docker-debian9-ansible
+    pre_build_image: true
+```
+
+Will create the following entry in the documentation :
+
+Scenario | Platform name | Image |
+--- | --- | --- | --- | 
+``docker`` | debian10 | geerlingguy/docker-debian10-ansible | 
+``docker`` | debian9 | geerlingguy/docker-debian9-ansible |
+
+### Tasks
+
+A common workflow when developing an Ansible roles is to add only ```include``` command in the file ```tasks/main.yml```. It can be really useful to add tags to these include to allow shorter deployment.
+
+```Ansible-nwd``` will read these tags and write them in the documentation.
+
+For example: 
+
+```yaml
+# tasks file for python3
+
+  - include: packages.yml
+    tags:
+      - python3_packages
+      - python3
+  
+  - include: boto.yml
+    tags:
+      - python3_boto
+      - python3
+```
+
+Will create the following entry in the documentation:
+
+These tasks tags are available :
+
+* ``python3``
+
+* ``python3_boto``
+
+* ``python3_packages``
