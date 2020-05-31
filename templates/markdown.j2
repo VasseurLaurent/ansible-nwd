@@ -38,7 +38,7 @@ Variable | Type | Mandatory |  Example | Description
 Default Variables
 ------------------
 
-Variable | Value | Description | Type 
+Variable | Value | Description | Type
 --- | --- | --- | --- |
 
 {%- for item in default_value.keys() %}
@@ -47,12 +47,8 @@ Variable | Value | Description | Type
 
 Molecule scenario
 ------------------
-
-
 {%- for item in molecule.keys() %}
-
-{% if  molecule[item]['driver'] == 'docker' %}
-
+{%- if  molecule[item]['driver'] == 'docker' -%}
 ### {{ molecule[item]['driver'] | capitalize }}
 
 Scenario | Platform name | Image |
@@ -62,31 +58,31 @@ Scenario | Platform name | Image |
 ``{{ item }}`` | {{ platform['name'] }} | {{ platform['image'] }} |
 {%- endfor%}
 
-{% endif %}
+{%- endif -%}
 
-{% if  molecule[item]['driver'] == 'vagrant' %}
+{%- if  molecule[item]['driver'] == 'vagrant' %}
 
 ### {{ molecule[item]['driver'] | capitalize }}
 
 Scenario | Platform name | Box |
---- | --- | --- | 
+--- | --- | --- |
 {%- for platform in  molecule[item]['platforms'] %} 
 ``{{ item }}`` | {{ platform['name'] }} | {{ platform['box'] }} |
 {%- endfor%}`
 
 {% endif %}
 
-{% if  molecule[item]['driver'] == 'ec2' %}
+{%- if  molecule[item]['driver'] == 'ec2' %}
 
 ### {{ molecule[item]['driver'] | capitalize }}
 Scenario | Platform name | Image name | Instance type |
---- | --- | --- | --- | --- | 
+--- | --- | --- | --- | --- |
 {%- for platform in  molecule[item]['platforms'] %} 
 ``{{ item }}`` | {{ platform['name'] }} | {{ platform['image_name'] }} | {{ platform['instance_type'] }}
-{%- endfor%}
+{%- endfor %}
 
 
-{% endif %}
+{% endif -%}
 
 {%- endfor %}
 
