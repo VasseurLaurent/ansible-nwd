@@ -10,6 +10,32 @@ It parses all Ansible roles folder and get gathers information to write them in 
 
 ``Ansible-nwd`` is also compatible with ``molecule`` , it will parse your different scenario and write them into your documentation file.
 
+## Get started !
+
+`Ansible-nwd` is really easy to use.
+
+First clone the repository :
+
+```shell
+git clone https://github.com/VasseurLaurent/ansible-nwd.git
+```
+
+Then install python requirements:
+
+```shell
+pip install -r requirements.txt
+```
+
+Now you can use it on your ansible role !
+
+FIll in your ansible role to follown ```Ansible-nwd``` pattern and :
+
+```shell
+python main.py -m 'path/to/your/role'
+```
+
+That's it ! Your documentation is ready
+
 ## How does it work ?
 
 ``Ansible-nwd`` will parse your folders Ansible roles and according to the folder and some patterns found in your yaml files it will gathers information for you.
