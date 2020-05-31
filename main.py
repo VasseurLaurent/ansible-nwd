@@ -1,6 +1,6 @@
 import argparse
 import os
-from parsing import parsing_default_tag, parsing_meta, parsing_default_variable
+from parsing import parsing_default_tag, parsing_meta, parsing_default_variable, parsing_molecule
 from jinja2 import Environment, FileSystemLoader
 
 role = False
@@ -50,15 +50,20 @@ if 'molecule' in dir_list :
 
 if role is True:
     # Gathers information from parsing
+    list_molecule = {}
     list_tag_default = parsing_default_tag(path=role_full_path)
     list_default_variable = parsing_default_variable(path=role_full_path)
     meta = parsing_meta(path=role_full_path)
+
+    if molecule is True:
+        list_molecule = parsing_molecule(path=role_full_path)
 
     # Load template
     env = Environment(loader=FileSystemLoader(script_folder + '/templates'))
     template = env.get_template(arguments.template)
 
-    readme = template.render(name=role_name,default_tag=list_tag_default,default_value=list_default_variable,meta=meta)
+    readme = template.render(name=role_name, default_tag=list_tag_default,
+                             default_value=list_default_variable, meta=meta, molecule=list_molecule)
     f = open(role_full_path + "/" + arguments.readme, "w+")
     f.write(readme)
     f.close()

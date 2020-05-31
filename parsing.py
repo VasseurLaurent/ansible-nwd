@@ -84,7 +84,6 @@ def parsing_default_variable(path):
             default_variable[item] = {
                 'value': default_variable_defined_without_comment[item]}
 
-    print(default_variable)
     return default_variable
             
 
@@ -104,3 +103,19 @@ def parsing_meta(path):
         return meta
 
 
+def parsing_molecule(path):
+    path = path + "/molecule/"
+    molecule = {}
+
+    list_scenario = [f for f in listdir(path)]
+
+    for scenario in list_scenario:
+        with open(path + scenario + '/molecule.yml', 'r') as f:
+            yaml = ruamel.yaml.YAML()
+            doc = yaml.load(f)
+
+            molecule[scenario] = {'driver': doc['driver']['name'] , 'platforms': doc['platforms']}
+
+    return molecule
+    print(list_scenario)
+    print(molecule)

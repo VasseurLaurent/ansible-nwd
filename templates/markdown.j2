@@ -45,6 +45,51 @@ Variable | Value | Description | Type
 ``{{ item }}`` | {{ default_value[ item ]['value'] }} | {{ default_value[ item ]['description'] | default('n/a')}} | {{ default_value[ item ]['type'] | default('n/a')}} |
 {%- endfor %}
 
+Molecule scenario
+------------------
+
+
+{%- for item in molecule.keys() %}
+
+{% if  molecule[item]['driver'] == 'docker' %}
+
+### {{ molecule[item]['driver'] | capitalize }}
+
+Scenario | Platform name | Image |
+--- | --- | --- | --- |
+
+{%- for platform in  molecule[item]['platforms'] %} 
+``{{ item }}`` | {{ platform['name'] }} | {{ platform['image'] }} |
+{%- endfor%}
+
+{% endif %}
+
+{% if  molecule[item]['driver'] == 'vagrant' %}
+
+### {{ molecule[item]['driver'] | capitalize }}
+
+Scenario | Platform name | Box |
+--- | --- | --- | 
+{%- for platform in  molecule[item]['platforms'] %} 
+``{{ item }}`` | {{ platform['name'] }} | {{ platform['box'] }} |
+{%- endfor%}`
+
+{% endif %}
+
+{% if  molecule[item]['driver'] == 'ec2' %}
+
+### {{ molecule[item]['driver'] | capitalize }}
+Scenario | Platform name | Image name | Instance type |
+--- | --- | --- | --- | --- | 
+{%- for platform in  molecule[item]['platforms'] %} 
+``{{ item }}`` | {{ platform['name'] }} | {{ platform['image_name'] }} | {{ platform['instance_type'] }}
+{%- endfor%}
+
+
+{% endif %}
+
+{%- endfor %}
+
 Author
 -------
 
