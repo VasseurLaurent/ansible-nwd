@@ -38,12 +38,11 @@ Variable | Type | Mandatory |  Example | Description
 Default Variables
 ------------------
 
-Variable | value |
---- | --- |
-{%- for item in default_value %}
-{%- for key in item %}
-| {{ key }} | {{ item[key]}} |
-{%- endfor %}
+Variable | Value | Description | Type 
+--- | --- | --- | --- |
+
+{%- for item in default_value.keys() %}
+``{{ item }}`` | {{ default_value[ item ]['value'] }} | {{ default_value[ item ]['description'] | default('n/a')}} | {{ default_value[ item ]['type'] | default('n/a')}} |
 {%- endfor %}
 
 Author
