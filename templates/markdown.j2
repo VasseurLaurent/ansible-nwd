@@ -62,7 +62,7 @@ Molecule scenario
 ### {{ molecule[item]['driver'] | capitalize }}
 
 Scenario | Platform name | Image |
---- | --- | --- | --- |
+--- | --- | --- |
 
 {%- for platform in  molecule[item]['platforms'] %} 
 ``{{ item }}`` | {{ platform['name'] }} | {{ platform['image'] }} |
