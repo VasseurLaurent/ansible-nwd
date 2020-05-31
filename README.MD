@@ -125,7 +125,7 @@ platforms:
 Will create the following entry in the documentation :
 
 Scenario | Platform name | Image |
---- | --- | --- | --- | 
+--- | --- | --- | 
 ``docker`` | debian10 | geerlingguy/docker-debian10-ansible | 
 ``docker`` | debian9 | geerlingguy/docker-debian9-ansible |
 
