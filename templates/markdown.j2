@@ -86,7 +86,7 @@ Scenario | Platform name | Box |
 
 ### {{ molecule[item]['driver'] | capitalize }}
 Scenario | Platform name | Image name | Instance type |
---- | --- | --- | --- | --- |
+--- | --- | --- | --- |
 {%- for platform in  molecule[item]['platforms'] %} 
 ``{{ item }}`` | {{ platform['name'] }} | {{ platform['image_name'] }} | {{ platform['instance_type'] }}
 {%- endfor %}

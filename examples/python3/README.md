@@ -57,7 +57,7 @@ Molecule scenario
 
 ### Ec2
 Scenario | Platform name | Image name | Instance type |
---- | --- | --- | --- | --- | 
+--- | --- | --- | --- | 
 ``default`` | debian10 | debian-10-amd64-* | t3.medium
 
 
