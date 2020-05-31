@@ -87,8 +87,6 @@ def parsing_default_variable(path):
     return default_variable
             
 
-
-
 def parsing_meta(path):
     meta = {}
     path = path + "/meta/main.yml"
@@ -117,5 +115,17 @@ def parsing_molecule(path):
             molecule[scenario] = {'driver': doc['driver']['name'] , 'platforms': doc['platforms']}
 
     return molecule
-    print(list_scenario)
-    print(molecule)
+
+def parsing_tasks(path):
+    tags = []
+    path = path + "/tasks/main.yml"
+    print(path)
+    with open(path, 'r') as f:
+        yaml = ruamel.yaml.YAML()
+        file_loaded = yaml.load(f)
+        for item in file_loaded:
+            for tag in item['tags']:
+                if tag not in tags:
+                    tags.append(tag)
+    return sorted(tags)
+

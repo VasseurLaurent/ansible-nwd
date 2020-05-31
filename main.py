@@ -1,6 +1,6 @@
 import argparse
 import os
-from parsing import parsing_default_tag, parsing_meta, parsing_default_variable, parsing_molecule
+from parsing import parsing_default_tag, parsing_meta, parsing_default_variable, parsing_molecule , parsing_tasks
 from jinja2 import Environment, FileSystemLoader
 
 role = False
@@ -10,7 +10,7 @@ role_model = ['meta','templates','handlers','tasks','defaults','files','vars','t
 parser = argparse.ArgumentParser(description='Ansible never write the doc help')
 
 parser.add_argument('-m', '--module' ,  type=str, help='Module directory path', required=False, default='.')
-parser.add_argument('-r', '--readme', type=str, help='Define readme file name', required=False, default='README.MD')
+parser.add_argument('-r', '--readme', type=str, help='Define readme file name', required=False, default='README.md')
 parser.add_argument('-t', '--template', type=str, help='Define template file ', required=False, default='markdown.j2')
 
 arguments = parser.parse_args()
@@ -54,6 +54,7 @@ if role is True:
     list_tag_default = parsing_default_tag(path=role_full_path)
     list_default_variable = parsing_default_variable(path=role_full_path)
     meta = parsing_meta(path=role_full_path)
+    list_tasks = parsing_tasks(path=role_full_path)
 
     if molecule is True:
         list_molecule = parsing_molecule(path=role_full_path)
@@ -63,7 +64,7 @@ if role is True:
     template = env.get_template(arguments.template)
 
     readme = template.render(name=role_name, default_tag=list_tag_default,
-                             default_value=list_default_variable, meta=meta, molecule=list_molecule)
+                             default_value=list_default_variable, meta=meta, molecule=list_molecule, tasks=list_tasks)
     f = open(role_full_path + "/" + arguments.readme, "w+")
     f.write(readme)
     f.close()
