@@ -32,7 +32,7 @@ These tasks tags are available :
 
 {%- for item in tasks %}
 
-* {{ item }}
+* ``{{ item }}``
 {%- endfor %}
 
 Role Variables
@@ -58,7 +58,7 @@ Variable | Value | Description | Type
 Molecule scenario
 ------------------
 {%- for item in molecule.keys() %}
-{%- if  molecule[item]['driver'] == 'docker' -%}
+{%- if  molecule[item]['driver'] == 'docker' %}
 ### {{ molecule[item]['driver'] | capitalize }}
 
 Scenario | Platform name | Image |

@@ -1,0 +1,26 @@
+---
+
+- name: Install python
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - python
+      - python3
+      - python3-pip
+      - python-pip
+      - virtualenv
+      - python-virtualenv
+
+- name: Set python3 by default
+  alternatives:
+    name: python
+    link: /usr/bin/python
+    path: /usr/bin/python3
+
+- name: Set pip3 by default
+  alternatives:
+    name: pip
+    link: /usr/bin/pip
+    path: /usr/bin/pip3

@@ -1,0 +1,26 @@
+galaxy_info:
+  author: 'Laurent VASSEUR'
+  description: This role installs Python3 and set it by default
+  company: xxxxx
+
+  # Choose a valid license ID from https://spdx.org - some suggested licenses:
+  # - BSD-3-Clause (default)
+  # - MIT
+  # - GPL-2.0-or-later
+  # - GPL-3.0-only
+  # - Apache-2.0
+  # - CC-BY-4.0
+  license: Apache-2.0
+
+  min_ansible_version: 2.9
+
+  # https://galaxy.ansible.com/api/v1/platforms/
+
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+        - stretch
+  galaxy_tags: []
+
+dependencies: []

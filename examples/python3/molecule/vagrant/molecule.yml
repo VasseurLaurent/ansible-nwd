@@ -1,0 +1,33 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+
+lint: |
+  yamllint .
+  ansible-lint .
+
+platforms:
+  - name: debian10
+    box: debian/buster64
+provisioner:
+  name: ansible
+
+verifier:
+  name: ansible
+
+scenario:
+  name: vagrant
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - destroy

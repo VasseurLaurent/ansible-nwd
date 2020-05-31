@@ -1,0 +1,12 @@
+---
+# tasks file for python3
+
+  - include: packages.yml
+    tags:
+      - python3_packages
+      - python3
+  
+  - include: boto.yml
+    tags:
+      - python3_boto
+      - python3

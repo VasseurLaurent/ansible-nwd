@@ -1,0 +1,36 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: ec2
+lint: |
+  yamllint .
+  ansible-lint .
+  
+platforms:
+  - name: debian10
+    image_name: debian-10-amd64-*
+    image_owner: 136693071363
+    instance_type: t3.medium
+    vpc_subnet_id: xxxxxxxxxxx
+
+provisioner:
+  name: ansible
+        
+verifier:
+  name: ansible
+
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - destroy
