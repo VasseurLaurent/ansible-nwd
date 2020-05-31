@@ -7,4 +7,4 @@ install:
     - pip install -r requirements.txt
 
 script:
-    - main.py -m 'examples/python3/'
+    - python main.py -m 'examples/python3/'
