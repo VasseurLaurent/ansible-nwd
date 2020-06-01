@@ -7,5 +7,6 @@ install:
     - pip install -r requirements.txt
 
 script:
+    - ls -la 
     - pip install -e .'
     - ansible-nwd -m '../examples/python3/'
