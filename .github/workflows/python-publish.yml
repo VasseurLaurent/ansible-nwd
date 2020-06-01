@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
+        run: docker build . --file Dockerfile --tag ansible-nwd
         working-directory: ./docker
 
       - name: Log into registry
@@ -68,7 +68,7 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=laurentvasseur/$IMAGE_NAME
+          IMAGE_ID=laurentvasseur/ansible-nwd
           
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -85,6 +85,6 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker tag ansible-nwd $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
         working-directory: ./docker
