@@ -12,8 +12,6 @@ setuptools.setup(
     author='VASSEUR Laurent',
     author_email='mail.laurentvasseur@gmail.com',
     url='https://github.com/VasseurLaurent/ansible-nwd',
-    long_description=long_description,
-    long_description_content_type="text/markdown",
     download_url='https://github.com/VasseurLaurent/ansible-nwd/archive/v0.6.tar.gz',
     keywords=['ansible', 'documentation', 'automation'],
     install_requires=[
