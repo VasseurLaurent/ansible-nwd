@@ -119,7 +119,6 @@ def parsing_molecule(path):
 def parsing_tasks(path):
     tags = []
     path = path + "/tasks/main.yml"
-    print(path)
     with open(path, 'r') as f:
         yaml = ruamel.yaml.YAML()
         file_loaded = yaml.load(f)

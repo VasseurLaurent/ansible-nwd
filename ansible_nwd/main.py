@@ -33,8 +33,8 @@ def main():
     role_full_path = os.path.realpath(arguments.module)
     script_folder = os.path.dirname(os.path.realpath(__file__))
 
-    print("role_name: " + role_name)
-    print("role_full_path: " + role_full_path)
+    # print("role_name: " + role_name)
+    # print("role_full_path: " + role_full_path)
 
     # Check if the directory is a module directory
 
@@ -43,7 +43,6 @@ def main():
 
     if all(item in dir_list for item in role_model) is True:
         role = True
-        print("Role confirmed")
 
     else:
         print("Your role doesn't follow Ansible galaxy file tree, please use ansible-galaxy init to create your role")
@@ -52,7 +51,6 @@ def main():
 
     if 'molecule' in dir_list:
         molecule = True
-        print("Molecule detected")
 
     # Create README.MD file
 
