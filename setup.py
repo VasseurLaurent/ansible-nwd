@@ -5,14 +5,16 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='ansible-nwd',
-    packages=['ansible_nwd', 'ansible_nwd.parsing'],
-    version='0.5',
+    packages=setuptools.find_packages(),
+    version='0.6',
     license='MIT',
     description='Ansible role automatic documentation',
     author='VASSEUR Laurent',
     author_email='mail.laurentvasseur@gmail.com',
     url='https://github.com/VasseurLaurent/ansible-nwd',
-    download_url='https://github.com/VasseurLaurent/ansible-nwd/archive/v0.5.tar.gz',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    download_url='https://github.com/VasseurLaurent/ansible-nwd/archive/v0.6.tar.gz',
     keywords=['ansible', 'documentation', 'automation'],
     install_requires=[
         'ruamel.yaml',

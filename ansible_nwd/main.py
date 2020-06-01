@@ -1,5 +1,5 @@
 import argparse
-import parsing
+from .parsing import parsing
 import os
 
 from jinja2 import Environment, FileSystemLoader
