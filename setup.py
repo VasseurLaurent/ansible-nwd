@@ -1,14 +1,18 @@
-from setuptools import setup
-setup(
+import setuptools
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
     name='ansible-nwd',
-    packages=['ansible_nwd'],
-    version='0.3',
+    packages=setuptools.find_packages(),
+    version='0.4',
     license='MIT',
     description='Ansible role automatic documentation',
     author='VASSEUR Laurent',
     author_email='mail.laurentvasseur@gmail.com',
     url='https://github.com/VasseurLaurent/ansible-nwd',
-    download_url='https://github.com/VasseurLaurent/ansible-nwd/archive/v0.3.tar.gz',
+    download_url='https://github.com/VasseurLaurent/ansible-nwd/archive/v0.4.tar.gz',
     keywords=['ansible', 'documentation', 'automation'],
     install_requires=[
         'ruamel.yaml',
@@ -24,7 +28,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'ansible-nwd=main.py:main',
+            'ansible-nwd=ansible_nwd.main:main',
         ]
     },
     python_requires='>=3.6',
