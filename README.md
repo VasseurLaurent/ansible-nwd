@@ -1,6 +1,6 @@
 # Ansible Never Write the Doc
 
-[![Build Status](https://travis-ci.com/VasseurLaurent/ansible-nwd.svg?branch=master)](https://travis-ci.com/VasseurLaurent/ansible-nwd) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.com/VasseurLaurent/ansible-nwd.svg?branch=master)](https://travis-ci.com/VasseurLaurent/ansible-nwd) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![PyPI version](https://badge.fury.io/py/ansible-nwd.svg)](https://badge.fury.io/py/ansible-nwd)
 
 ## Introduction
 
