@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
     name='ansible-nwd',
     packages=['ansible-nwd'],
-    version='0.1',
+    version='0.2',
     license='MIT',
     description='Ansible role automatic documentation',
     author='VASSEUR Laurent',
