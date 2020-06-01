@@ -1,6 +1,6 @@
 # Ansible Never Write the Doc
 
-[![Build Status](https://travis-ci.com/VasseurLaurent/ansible-nwd.svg?branch=master)](https://travis-ci.com/VasseurLaurent/ansible-nwd) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![PyPI version](https://badge.fury.io/py/ansible-nwd.svg)](https://badge.fury.io/py/ansible-nwd) ![Upload Python Package](https://github.com/VasseurLaurent/ansible-nwd/workflows/Upload%20Python%20Package/badge.svg)
+[![Build Status](https://travis-ci.com/VasseurLaurent/ansible-nwd.svg?branch=master)](https://travis-ci.com/VasseurLaurent/ansible-nwd) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![PyPI version](https://badge.fury.io/py/ansible-nwd.svg)](https://badge.fury.io/py/ansible-nwd) ![Upload Pypi & build docker](https://github.com/VasseurLaurent/ansible-nwd/workflows/Upload%20Pypi%20&%20build%20docker/badge.svg)
 
 ## Introduction
 
