@@ -8,5 +8,5 @@ install:
 
 script:
     - ls -la 
-    - pip install -e .'
+    - pip install -e .
     - ansible-nwd -m '../examples/python3/'
