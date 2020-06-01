@@ -70,7 +70,7 @@ def main():
 
         # Load template
         env = Environment(loader=FileSystemLoader(
-            script_folder + '/templates'))
+            script_folder))
         template = env.get_template(arguments.template)
 
         readme = template.render(name=role_name, default_tag=list_tag_default,
