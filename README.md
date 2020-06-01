@@ -10,7 +10,7 @@ It parses all Ansible roles folders and gathers information to write them into a
 
 ``Ansible-nwd`` is also compatible with ``molecule`` , it will parse your different scenarios and write them into your documentation file.
 
-## Get started !
+## Get started with pip !
 
 `Ansible-nwd` is really easy to use.
 
@@ -32,6 +32,16 @@ or
 
 ```shell
 cd 'path/to/your/role' && ansible-nwd
+```
+
+That's it ! Your documentation is ready
+
+## Get started with docker !
+
+You can simply run the docker in your Ansible role folder such as :
+
+```shell
+docker run -v $(pwd):/data laurentvasseur/ansible-nwd
 ```
 
 That's it ! Your documentation is ready
