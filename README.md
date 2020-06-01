@@ -14,16 +14,10 @@ It parses all Ansible roles folder and get gathers information to write them in 
 
 `Ansible-nwd` is really easy to use.
 
-First clone the repository :
+First of install it with pip :
 
 ```shell
-git clone https://github.com/VasseurLaurent/ansible-nwd.git
-```
-
-Then install python requirements:
-
-```shell
-pip install -r requirements.txt
+pip install ansible-nwd
 ```
 
 Now you can use it on your ansible role !
@@ -31,7 +25,13 @@ Now you can use it on your ansible role !
 FIll in your ansible role to follown ```Ansible-nwd``` pattern and :
 
 ```shell
-python main.py -m 'path/to/your/role'
+ansible-nwd -m 'path/to/your/role'
+```
+
+or
+
+```shell
+cd 'path/to/your/role' && ansible-nwd
 ```
 
 That's it ! Your documentation is ready
