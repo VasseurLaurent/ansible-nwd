@@ -4,11 +4,11 @@
 
 ## Introduction
 
-``Ansible Never Write the Doc`` provides you an automatic way to create Ansible roles.
+``Ansible Never Write the Doc`` provides you an automatic way to create Ansible roles documentation.
 
-It parses all Ansible roles folder and get gathers information to write them in a ``Readme.md`` for you.
+It parses all Ansible roles folders and gathers information to write them into a ``Readme.md`` for you.
 
-``Ansible-nwd`` is also compatible with ``molecule`` , it will parse your different scenario and write them into your documentation file.
+``Ansible-nwd`` is also compatible with ``molecule`` , it will parse your different scenarios and write them into your documentation file.
 
 ## Get started !
 
@@ -38,7 +38,7 @@ That's it ! Your documentation is ready
 
 ## How does it work ?
 
-``Ansible-nwd`` will parse your folders Ansible roles and according to the folder and some patterns found in your yaml files it will gathers information for you.
+``Ansible-nwd`` will parse your Ansible roles folders and , according to the folder and some patterns found in your yaml files it will gather information for you.
 
 Currently, it parses these following folders:
 
@@ -54,14 +54,14 @@ Check below to know which pattern are recognized.
 
 ### Default
 
-In the folder ``default`` you can have two different pattern:
+In the folder ``default`` you can have two different patterns:
 
 * Default variables defined
 * Variables not defined by default but useful for your role
 
 #### Default variables defined
 
-If you define default variable, they will be retrieve by ``Ansible-nwd`` and their default value will be written in the documentation file.
+If you define a default variable, they will be retrieved by ``Ansible-nwd`` and their default values will be written in the documentation file.
 
 Moreover, you can add information about these variables following this pattern:
 
@@ -94,7 +94,7 @@ There are some variables that you cannot define by default or not mandatory for 
 
 With  ```Ansible-nwd ``` you can define some variables thank to tags in comment.
 
-For example, if you want to specify a variable which is not defined as default you can do it following the following pattern:
+For example, if you want to specify a variable which is not defined as default you can do it following this pattern:
 
 ```yaml
 # @var variable:description:type:example:mandatory(bool)
@@ -107,7 +107,7 @@ For example :
 # @var variable2:description2:type2:example2:true
 ```
 
-WIll create this entry in your documentation file :
+Will create this entry in your documentation file :
 
 Variable | Type | Mandatory |  Example | Description
 --- | --- | --- | --- | --- |
@@ -125,7 +125,7 @@ In the meta folder, ``Ansible-nwd`` will gather these following information:
 
 ### Molecule
 
-In the folder molecule, ``Ansible-nwd`` will parse each subfolder (we consider one driver per folder ) and will gather information about available test plaforms written in the file ```molecule.yml``` .
+In the folder molecule, ``Ansible-nwd`` will parse each subfolders (we consider one driver per folder ) and will gather information about available test plaforms written in the file ```molecule.yml``` .
 
 For now only 3 drivers are gathered by ```Ansible-nwd``` :
 
