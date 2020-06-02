@@ -135,7 +135,7 @@ In the file ``meta/main.yml``, ``Ansible-nwd`` will gather these following infor
 * Minimum Ansible Version
 * Platforms
 
-### In the file requirements.yml
+#### In the file requirements.yml
 
 In the file ``meta/requirements.yml``, we can describe dependencies (Ansible-galaxy syntax) roles to install before applying the role.
 
