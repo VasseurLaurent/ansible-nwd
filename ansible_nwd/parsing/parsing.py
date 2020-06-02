@@ -18,13 +18,13 @@ def parsing_default_tag(path):
         file_opened = open(file_default,'r')
         lines = file_opened.readlines()
 
-        # Regex : # @var variable:description:type:example:mandatory
+        # Regex : # @var variable;description;type;example;mandatory
 
         list_tag = []
         for line in lines:
 
             pattern = re.compile(
-                '^\s*# @var (?P<name>[\.0-9a-zA-Z_-]*):(?P<description>[\.\0-9a-zA-Z_-]*):(?P<type>[\.\S0-9a-zA-Z_-]*):(?P<example>[\.0-9a-zA-Z_-]*):(?P<mandatory>[\.0-9a-zA-Z_-]*)')
+                '^\s*# @var (?P<name>[^;\n]*);(?P<description>[^;\n]*);(?P<type>[^;\n]*);(?P<example>[^;\n]*);(?P<mandatory>[^;\n]*)')
 
             for m in pattern.finditer(line):
                 list_tag.append(m.groupdict())
@@ -62,7 +62,7 @@ def parsing_default_variable(path):
                     comment = comment[:-1]
 
                 pattern = re.compile(
-                    '^#\s*(?P<description>[\.\0-9a-zA-Z_-]*):(?P<type>[\.\S0-9a-zA-Z_-]*)')
+                    '^#\s*(?P<description>[^;\n]*);(?P<type>[^;\n]*)')
 
                 for m in pattern.finditer(comment):
                     default_variable[key] = m.groupdict()
