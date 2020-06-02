@@ -227,3 +227,7 @@ These tasks tags are available :
 * ``python3_boto``
 
 * ``python3_packages``
+
+## Example
+
+In this repo, you can find an example of Ansible role and all ``Ansible-nwd`` pattern available at the following path : ``examples/python3``
