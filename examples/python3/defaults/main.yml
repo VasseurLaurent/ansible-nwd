@@ -1,8 +1,8 @@
 ---
 # defaults file for python3
 
-# @var variable:variable description:type:example:false
-# @var variable2:description2:type2:example2:true
+# @var variable;variable description;type;example;false
+# @var variable2;description2;type2;example2;true
 
-default_variable1: 1.8 # default variable1 version:number
-default_variable2: 2.7 # default variable2 version:number
+default_variable1: 1.8 # default variable1 version;number
+default_variable2: 2.7 # default variable2 version;number

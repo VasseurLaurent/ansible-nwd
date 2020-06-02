@@ -76,15 +76,15 @@ If you define a default variable, they will be retrieved by ``Ansible-nwd`` and 
 Moreover, you can add information about these variables following this pattern:
 
 ```yaml
-your_variable: your_value # description of your variable:type
+your_variable: your_value # description of your variable;type
 ```
 
 For example :
 
 ```yaml
-default_variable1: 1.8 # default variable1 version:number
-default_variable2: 2.7 # default variable2 version:number
-other_variable: 3.4 # other variable version:number
+default_variable1: 1.8 # default variable1 version;number
+default_variable2: 2.7 # default variable2 version;number
+other_variable: 3.4 # other variable version;number
 test: 4.5
 ```
 
@@ -107,14 +107,14 @@ With  ```Ansible-nwd ``` you can define some variables thank to tags in comment.
 For example, if you want to specify a variable which is not defined as default you can do it following this pattern:
 
 ```yaml
-# @var variable:description:type:example:mandatory(bool)
+# @var variable;description;type;example;mandatory(bool)
 ```
 
 For example :
 
 ```yaml
-# @var variable:variable description:type:example:false
-# @var variable2:description2:type2:example2:true
+# @var variable;variable description;type;example;false
+# @var variable2;description2;type2;example2;true
 ```
 
 Will create this entry in your documentation file :
