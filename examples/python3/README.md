@@ -6,6 +6,14 @@ Description
 
 This role installs Python3 and set it by default
 
+Dependencies
+-----------
+
+Name | Source | Version |
+--- | --- | --- |
+```role1``` | git@gitlab.example.test:user/role1.git | v1.0 |
+```role2``` | git@gitlab.example.test:user/role2.git | v1.2 |
+
 Requirements
 -------------
 

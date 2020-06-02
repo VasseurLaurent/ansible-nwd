@@ -1,0 +1,11 @@
+---
+
+- src : git@gitlab.example.test:user/role1.git
+  name: role1
+  scm: git
+  version: v1.0
+
+- src : git@gitlab.example.test:user/role2.git
+  name: role2
+  scm: git
+  version: v1.2

@@ -126,12 +126,43 @@ Variable | Type | Mandatory |  Example | Description
 
 ### Meta
 
-In the meta folder, ``Ansible-nwd`` will gather these following information:
+#### In the file main.yml
+
+In the file ``meta/main.yml``, ``Ansible-nwd`` will gather these following information:
 
 * Author
 * Description
 * Minimum Ansible Version
 * Platforms
+
+### In the file requirements.yml
+
+In the file ``meta/requirements.yml``, we can describe dependencies (Ansible-galaxy syntax) roles to install before applying the role.
+
+``Ansible-nwd`` will read these information and write them in the documentation file.
+
+If the file doesn't exist or if it is empty, ``Ansible-nwd`` will write that this role has no dependencies.
+
+For example:
+
+```yaml
+- src : git@gitlab.example.test:user/role1.git
+  name: role1
+  scm: git
+  version: v1.0
+
+- src : git@gitlab.example.test:user/role2.git
+  name: role2
+  scm: git
+  version: v1.2
+```
+
+Will create the following entry in the documentation :
+
+Name | Source | Version |
+--- | --- | --- |
+```role1``` | git@gitlab.example.test:user/role1.git | v1.0 |
+```role2``` | git@gitlab.example.test:user/role2.git | v1.2 |
 
 ### Molecule
 

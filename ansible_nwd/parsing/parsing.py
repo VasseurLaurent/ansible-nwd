@@ -100,6 +100,19 @@ def parsing_meta(path):
                 
         return meta
 
+def parsing_dependencies(path):
+    dependencies = {}
+    path = path + "/meta/requirements.yml"
+    if isfile (path):
+        with open(path) as f:
+            yaml = ruamel.yaml.YAML()
+            file_loaded = yaml.load(f)
+            if file_loaded:
+                for item in file_loaded:
+                    dependencies[item['name']] = {
+                        'src': item['src'], 'version': item['version']}
+    return dependencies
+
 
 def parsing_molecule(path):
     path = path + "/molecule/"

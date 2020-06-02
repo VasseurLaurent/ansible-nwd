@@ -61,6 +61,7 @@ def main():
         list_default_variable = parsing.parsing_default_variable(
             path=role_full_path)
         meta = parsing.parsing_meta(path=role_full_path)
+        dependencies = parsing.parsing_dependencies(path=role_full_path)
         list_tasks = parsing.parsing_tasks(path=role_full_path)
 
         if molecule is True:
@@ -72,7 +73,7 @@ def main():
         template = env.get_template(arguments.template)
 
         readme = template.render(name=role_name, default_tag=list_tag_default,
-                                 default_value=list_default_variable, meta=meta, molecule=list_molecule, tasks=list_tasks)
+                                 default_value=list_default_variable, meta=meta, molecule=list_molecule, tasks=list_tasks, dependencies=dependencies)
         f = open(role_full_path + "/" + arguments.readme, "w+")
         f.write(readme)
         f.close()

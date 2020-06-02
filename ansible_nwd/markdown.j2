@@ -6,6 +6,21 @@ Description
 
 {{ meta.description }}
 
+Dependencies
+-----------
+
+{%- if dependencies|length %}
+
+Name | Source | Version |
+--- | --- | --- |
+{%- for item in dependencies.keys() %}
+```{{ item }}``` | {{ dependencies[item]['src'] }} | {{ dependencies[item]['version'] }} |
+{%- endfor %}
+
+{%- else %}
+This role has no dependencies.
+{%- endif %}
+
 Requirements
 -------------
 

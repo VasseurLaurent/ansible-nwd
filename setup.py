@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name='ansible-nwd',
     packages=setuptools.find_packages(),
-    version='0.6',
+    version='0.7',
     license='MIT License',
     data_files=[("ansible_nwd",
                  ["ansible_nwd/markdown.j2"])],
@@ -17,7 +17,7 @@ setuptools.setup(
     author='VASSEUR Laurent',
     author_email='mail.laurentvasseur@gmail.com',
     url='https://github.com/VasseurLaurent/ansible-nwd',
-    download_url='https://github.com/VasseurLaurent/ansible-nwd/archive/v0.6.tar.gz',
+    download_url='https://github.com/VasseurLaurent/ansible-nwd/archive/v0.7.tar.gz',
     keywords=['ansible', 'documentation', 'automation'],
     install_requires=[
         'ruamel.yaml',
