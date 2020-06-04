@@ -12,9 +12,7 @@ It parses all Ansible roles folders and gathers information to write them into a
 
 ## Resources
 
-* Get started documentation : https://docs.ansible-nwd.com/guide/
-
-* Pattern documentation : https://docs.ansible-nwd.com/docs/
+* Documentation : https://docs.ansible-nwd.com
 
 * Pip download : https://pypi.org/project/ansible-nwd/
 
