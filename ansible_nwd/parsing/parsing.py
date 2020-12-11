@@ -1,4 +1,4 @@
-from os.path import isfile, join
+from os.path import isfile, join, exists
 from os import listdir
 from collections import defaultdict
 import ruamel.yaml
@@ -121,7 +121,10 @@ def parsing_molecule(path):
     list_scenario = [f for f in listdir(path)]
 
     for scenario in list_scenario:
-        with open(path + scenario + '/molecule.yml', 'r') as f:
+        molecule_scenario = path + scenario + '/molecule.yml'
+        if not exists(molecule_scenario):
+            continue
+        with open(molecule_scenario, 'r') as f:
             yaml = ruamel.yaml.YAML()
             doc = yaml.load(f)
 
