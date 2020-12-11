@@ -1,0 +1,6 @@
+---
+
+# @var variablemain;variable description;type;example;false
+
+default_main_variable1: 1.8 # default variable1 version;number
+default_main_variable2: 2.7 # default variable2 version;number

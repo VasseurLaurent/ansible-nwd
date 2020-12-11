@@ -1,0 +1,29 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  tasks:
+   
+  - name: Get /usr/bin/python information
+    stat:
+      path: /usr/bin/python
+    register: python
+
+  - name: /usr/bin/python should be a link to alternative
+    assert:
+      that:
+        python.stat.exists and python.stat.islnk
+      fail_msg: Alternative is not configured
+      success_msg: Alternative is well configured
+
+  - name: Get Python version information
+    command: python --version
+    register: python_version
+
+  - name: Python version should be in version 3.X
+    assert:
+      that:
+        - python_version.stdout is match('^Python 3.[0-9].[0-9]')
+      fail_msg: Python 3 is used by default
+      success_msg: Python 3 is used by default

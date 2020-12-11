@@ -53,21 +53,21 @@ These tasks tags are available :
 Role Variables
 --------------
 
-Variable | Type | Mandatory |  Example | Description
---- | --- | --- | --- | --- |
+Variable | Type | Mandatory |  Example | File | Description
+--- | --- | --- | --- | --- | --- |
 {%- for item in default_tag %}
-`{{ item.name }}`  | {{ item.type }} | {{ item.mandatory }} | {{ item.example }} | {{ item.description }} |
+`{{ item.name }}`  | {{ item.type }} | {{ item.mandatory }} | {{ item.example }} | {{ item.file}} |  {{ item.description }} |
 {%- endfor %}
 
 
 Default Variables
 ------------------
 
-Variable | Value | Description | Type
---- | --- | --- | --- |
+Variable | Value | Description | Type | File
+--- | --- | --- | --- | --- |
 
 {%- for item in default_value.keys() %}
-``{{ item }}`` | {{ default_value[ item ]['value'] }} | {{ default_value[ item ]['description'] | default('n/a')}} | {{ default_value[ item ]['type'] | default('n/a')}} |
+``{{ item }}`` | {{ default_value[ item ]['value'] }} | {{ default_value[ item ]['description'] | default('n/a')}} | {{ default_value[ item ]['type'] | default('n/a')}} | {{ default_value[item]['file']}}
 {%- endfor %}
 
 Molecule scenario
@@ -81,7 +81,7 @@ Scenario | Platform name | Image |
 
 {%- for platform in  molecule[item]['platforms'] %} 
 ``{{ item }}`` | {{ platform['name'] }} | {{ platform['image'] }} |
-{%- endfor%}
+{%- endfor %}
 
 {%- endif -%}
 
@@ -97,7 +97,7 @@ Scenario | Platform name | Box |
 
 {% endif %}
 
-{%- if  molecule[item]['driver'] == 'ec2' %}
+{%- if molecule[item]['driver'] == 'ec2' %}
 
 ### {{ molecule[item]['driver'] | capitalize }}
 Scenario | Platform name | Image name | Instance type |
@@ -108,6 +108,26 @@ Scenario | Platform name | Image name | Instance type |
 
 
 {% endif -%}
+
+{%- if molecule[item]['driver'] == 'delegated' %}
+
+### {{ molecule[item]['driver'] | capitalize }}
+
+{% for keys in molecule[item]['keys']['keys']  -%}
+| {{ (keys|capitalize) + " " }}
+{%- endfor %}
+{% for separation in range (0,molecule[item]['keys']['keys']| length) -%}
+| --- 
+{%- endfor %}
+{%- for platform in molecule[item]['platforms']%}
+{% for key in molecule[item]['keys']['keys'] -%}
+| {%- if key == "name" -%}```{%- endif -%} {{ platform[key] }}{%- if key == "name" -%}```{%- endif -%}
+{%- endfor %}
+{%- endfor %}
+
+
+
+{% endif %}
 
 {%- endfor %}
 

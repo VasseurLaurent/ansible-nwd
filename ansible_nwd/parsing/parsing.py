@@ -4,48 +4,50 @@ from collections import defaultdict
 import ruamel.yaml
 import re
 import sys
+import glob
+from ansible_nwd.utilities.utilities import *
+from collections import OrderedDict
 
 def parsing_default_tag(path):
     
     path = path + "/defaults/"
+    list_files_relpath_default = []
+    list_tag = []
 
-    list_files_default = [f for f in listdir(path) if isfile(join(path, f))]
+    get_list_files(path, list_files_relpath_default)
 
-    # Add full path to all list files
-    list_files_default = [path + s for s in list_files_default]
 
-    for file_default in list_files_default:
-        file_opened = open(file_default,'r')
+    # Parse all files in defaults to get tags
+
+    for relpath in list_files_relpath_default:
+
+        file_opened = open(os.path.join(path,relpath),'r')
         lines = file_opened.readlines()
 
         # Regex : # @var variable;description;type;example;mandatory
 
-        list_tag = []
         for line in lines:
-
             pattern = re.compile(
                 '^\s*# @var (?P<name>[^;\n]*);(?P<description>[^;\n]*);(?P<type>[^;\n]*);(?P<example>[^;\n]*);(?P<mandatory>[^;\n]*)')
-
             for m in pattern.finditer(line):
-                list_tag.append(m.groupdict())
-
-        file_opened.close()
-        return list_tag
+                output_regex = m.groupdict()
+                output_regex['file'] = relpath
+                list_tag.append(output_regex)
+            file_opened.close()
+    return list_tag
 
 def parsing_default_variable(path):
 
     default_variable = {}
     default_variable_defined_without_comment = {}
     path = path + "/defaults/"
+    list_files_default = []
 
-    list_files_default = [f for f in listdir(path) if isfile(join(path, f))]
-
+    get_list_files(path,list_files_default)
     # Add full path to all list files
-    list_files_default = [path + s for s in list_files_default]
-
 
     for file_default in list_files_default:
-        with open(file_default) as f:
+        with open(os.path.join(path,file_default)) as f:
             yaml = ruamel.yaml.YAML()
             file_loaded = yaml.load(f)
 
@@ -65,7 +67,10 @@ def parsing_default_variable(path):
                     '^#\s*(?P<description>[^;\n]*);(?P<type>[^;\n]*)')
 
                 for m in pattern.finditer(comment):
-                    default_variable[key] = m.groupdict()
+                    output_regex = m.groupdict()
+                    output_regex['file'] = file_default
+                    default_variable[key] = output_regex
+
 
             # print(default_variable)
 
@@ -119,14 +124,23 @@ def parsing_molecule(path):
     molecule = {}
 
     list_scenario = [f for f in listdir(path)]
-
     for scenario in list_scenario:
         with open(path + scenario + '/molecule.yml', 'r') as f:
             yaml = ruamel.yaml.YAML()
             doc = yaml.load(f)
-
+            # if doc['driver']['name'] == "delegated":
+            #     dict_test = doc['platforms'][0]
+            #     dict_test = dict(dict_test)
+            #     print(dict_test.keys())                    
             molecule[scenario] = {'driver': doc['driver']['name'] , 'platforms': doc['platforms']}
 
+            if molecule[scenario]['driver'] == "delegated" :
+                
+                for platform in molecule[scenario]['platforms'] :
+                    keys = dict(platform)
+                    # print(keys.keys())
+                    molecule[scenario]['keys'] = {'keys': keys.keys()}
+    print(molecule['delegated']['platforms'][0]['name'])
     return molecule
 
 def parsing_tasks(path):

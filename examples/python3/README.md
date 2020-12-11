@@ -44,21 +44,25 @@ These tasks tags are available :
 Role Variables
 --------------
 
-Variable | Type | Mandatory |  Example | Description
---- | --- | --- | --- | --- |
-`variable`  | type | false | example | variable description |
-`variable2`  | type2 | true | example2 | description2 |
+Variable | Type | Mandatory |  Example | File | Description
+--- | --- | --- | --- | --- | --- |
+`variable`  | type | false | example | main.yml |  variable description |
+`variable2`  | type2 | true | example2 | main.yml |  description2 |
+`other`  | other | false | other | other.yml |  other description |
+`variablemain`  | type | false | example | main/main.yml |  variable description |
 
 
 Default Variables
 ------------------
 
-Variable | Value | Description | Type
---- | --- | --- | --- |
-``default_variable1`` | 1.8 | default variable1 version | number |
-``default_variable2`` | 2.7 | default variable2 version | number |
-``other_variable`` | 3.4 | other variable version | number |
-``test`` | 4.5 | n/a | n/a |
+Variable | Value | Description | Type | File
+--- | --- | --- | --- | --- |
+``default_variable1`` | 1.8 | default variable1 version | number | main.yml
+``default_variable2`` | 2.7 | default variable2 version | number | main.yml
+``other_variable`` | 3.4 | other variable version | number | other.yml
+``default_main_variable1`` | 1.8 | default variable1 version | number | main/main.yml
+``default_main_variable2`` | 2.7 | default variable2 version | number | main/main.yml
+``test`` | 4.5 | n/a | n/a | 
 
 Molecule scenario
 ------------------
@@ -70,6 +74,14 @@ Scenario | Platform name | Image name | Instance type |
 
 
 
+
+### Vagrant
+
+Scenario | Platform name | Box |
+--- | --- | --- | 
+``vagrant`` | debian10 | debian/buster64 |`
+
+
 ### Docker
 
 Scenario | Platform name | Image |
@@ -77,11 +89,14 @@ Scenario | Platform name | Image |
 ``docker`` | debian10 | geerlingguy/docker-debian10-ansible | 
 ``docker`` | debian9 | geerlingguy/docker-debian9-ansible |
 
-### Vagrant
+### Delegated
 
-Scenario | Platform name | Box |
---- | --- | --- | 
-``vagrant`` | debian10 | debian/buster64 |`
+| Name | Image_name | Image_owner | Instance_type | Vpc_subnet_id 
+| ---| ---| ---| ---| ---
+|```debian10```|debian-10-amd64-*|136693071363|t3.medium|xxxxxxxxxxx
+|```debian11```|debian-10-amd64-*|136693071363|t3.medium|xxxxxxxxxxx
+
+
 
 
 
