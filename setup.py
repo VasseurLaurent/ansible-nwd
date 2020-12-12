@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name='ansible-nwd',
     packages=setuptools.find_packages(),
-    version='0.7',
+    version='0.8',
     license='MIT License',
     data_files=[("ansible_nwd",
                  ["ansible_nwd/markdown.j2"])],

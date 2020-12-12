@@ -71,9 +71,6 @@ def parsing_default_variable(path):
                     output_regex['file'] = file_default
                     default_variable[key] = output_regex
 
-
-            # print(default_variable)
-
             # Get value for default value
 
             for key, value in file_loaded.items():
@@ -132,6 +129,7 @@ def parsing_molecule(path):
             doc = yaml.load(f)            
             molecule[scenario] = {'driver': doc['driver']['name'] , 'platforms': doc['platforms']}
 
+            # If molecule driver is delegated we retreive all keys to be able to write the documentation
             if molecule[scenario]['driver'] == "delegated" :
                 
                 for platform in molecule[scenario]['platforms'] :
