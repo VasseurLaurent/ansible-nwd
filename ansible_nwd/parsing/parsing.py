@@ -84,11 +84,10 @@ def parsing_default_variable(path):
     for item in default_variable_defined_without_comment:
         if item in default_variable:
             default_variable[item].update(
-                value=default_variable_defined_without_comment[item])
+                value=str(default_variable_defined_without_comment[item]))
         else:
             default_variable[item] = {
-                'value': default_variable_defined_without_comment[item]}
-
+                'value': str(default_variable_defined_without_comment[item])}
     return default_variable
 
 
@@ -137,7 +136,6 @@ def parsing_molecule(path):
                 
                 for platform in molecule[scenario]['platforms'] :
                     keys = dict(platform)
-                    # print(keys.keys())
                     molecule[scenario]['keys'] = {'keys': keys.keys()}
     return molecule
 

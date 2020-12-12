@@ -57,12 +57,13 @@ Default Variables
 
 Variable | Value | Description | Type | File
 --- | --- | --- | --- | --- |
-``default_variable1`` | 1.8 | default variable1 version | number | main.yml
-``default_variable2`` | 2.7 | default variable2 version | number | main.yml
-``other_variable`` | 3.4 | other variable version | number | other.yml
-``default_main_variable1`` | 1.8 | default variable1 version | number | main/main.yml
-``default_main_variable2`` | 2.7 | default variable2 version | number | main/main.yml
-``test`` | 4.5 | n/a | n/a | 
+``default_variable1`` | 1.8  | default variable1 version | number | main.yml
+``default_variable2`` | 2.7  | default variable2 version | number | main.yml
+``other_variable`` | 3.4  | other variable version | number | other.yml
+``default_main_variable1`` | 1.8  | default variable1 version | number | main/main.yml
+``default_main_variable2`` | 2.7  | default variable2 version | number | main/main.yml
+``iis_dsc_log_default_config`` |  [value](defaults/main/main.yml)  | default iis dsc log | ordereddict | main/main.yml
+``test`` | 4.5  | n/a | n/a | 
 
 Molecule scenario
 ------------------

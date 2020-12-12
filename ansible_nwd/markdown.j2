@@ -67,7 +67,7 @@ Variable | Value | Description | Type | File
 --- | --- | --- | --- | --- |
 
 {%- for item in default_value.keys() %}
-``{{ item }}`` | {{ default_value[ item ]['value'] }} | {{ default_value[ item ]['description'] | default('n/a')}} | {{ default_value[ item ]['type'] | default('n/a')}} | {{ default_value[item]['file']}}
+``{{ item }}`` | {% if (default_value[ item ]['value'] | length) <= 100 %}{{ default_value[ item ]['value'] }} {% else %} [value](defaults/{{ default_value[item]['file'] }}) {% endif %} | {{ default_value[ item ]['description'] | default('n/a')}} | {{ default_value[ item ]['type'] | default('n/a')}} | {{ default_value[item]['file']}}
 {%- endfor %}
 
 Molecule scenario
