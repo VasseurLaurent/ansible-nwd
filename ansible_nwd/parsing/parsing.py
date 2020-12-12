@@ -139,7 +139,6 @@ def parsing_molecule(path):
                     keys = dict(platform)
                     # print(keys.keys())
                     molecule[scenario]['keys'] = {'keys': keys.keys()}
-    print(molecule['delegated']['platforms'][0]['name'])
     return molecule
 
 def parsing_tasks(path):
