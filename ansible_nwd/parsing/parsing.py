@@ -127,11 +127,7 @@ def parsing_molecule(path):
     for scenario in list_scenario:
         with open(path + scenario + '/molecule.yml', 'r') as f:
             yaml = ruamel.yaml.YAML()
-            doc = yaml.load(f)
-            # if doc['driver']['name'] == "delegated":
-            #     dict_test = doc['platforms'][0]
-            #     dict_test = dict(dict_test)
-            #     print(dict_test.keys())                    
+            doc = yaml.load(f)            
             molecule[scenario] = {'driver': doc['driver']['name'] , 'platforms': doc['platforms']}
 
             if molecule[scenario]['driver'] == "delegated" :
