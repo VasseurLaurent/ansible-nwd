@@ -1,4 +1,4 @@
-from os.path import isfile, join
+from os.path import isfile, join, exists
 from os import listdir
 from collections import defaultdict
 import ruamel.yaml
@@ -9,7 +9,7 @@ from ansible_nwd.utilities.utilities import *
 from collections import OrderedDict
 
 def parsing_default_tag(path):
-    
+
     path = path + "/defaults/"
     list_files_relpath_default = []
     list_tag = []
@@ -90,7 +90,7 @@ def parsing_default_variable(path):
                 'value': default_variable_defined_without_comment[item]}
 
     return default_variable
-            
+
 
 def parsing_meta(path):
     meta = {}
@@ -102,7 +102,7 @@ def parsing_meta(path):
                 'description': doc["galaxy_info"]["description"],
                 'min_ansible_version': doc["galaxy_info"]["min_ansible_version"],
                 'platforms': doc["galaxy_info"]["platforms"]}
-                
+
         return meta
 
 def parsing_dependencies(path):
@@ -125,7 +125,10 @@ def parsing_molecule(path):
 
     list_scenario = [f for f in listdir(path)]
     for scenario in list_scenario:
-        with open(path + scenario + '/molecule.yml', 'r') as f:
+        molecule_scenario = path + scenario + '/molecule.yml'
+        if not exists(molecule_scenario):
+            continue
+        with open(molecule_scenario, 'r') as f:
             yaml = ruamel.yaml.YAML()
             doc = yaml.load(f)            
             molecule[scenario] = {'driver': doc['driver']['name'] , 'platforms': doc['platforms']}
@@ -146,6 +149,8 @@ def parsing_tasks(path):
         yaml = ruamel.yaml.YAML()
         file_loaded = yaml.load(f)
         for item in file_loaded:
+            if 'tags' not in item:
+                continue
             for tag in item['tags']:
                 if tag not in tags:
                     tags.append(tag)
